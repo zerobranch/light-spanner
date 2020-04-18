@@ -1,0 +1,3 @@
+rootProject.name='light-spanner'
+include ':app'
+include ':lightspanner'

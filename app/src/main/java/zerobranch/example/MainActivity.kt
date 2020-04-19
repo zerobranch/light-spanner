@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun example1() {
-        Spanner(ex_1)
+        Spanner()
             .appendln("Example 1", Spans.bold())
             .newLine()
             .appendln("About the moon", Spans.bold())
@@ -74,46 +74,49 @@ class MainActivity : AppCompatActivity() {
             .append(" Moon ", Spans.boldItalic(), Spans.foregroundColor(ContextCompat.getColor(this, R.color.green)))
             .append("is an astronomical body orbiting Earth as its only natural satellite.")
             .all(Spans.textSize(12f, DimensionType.SP))
-            .install()
+            .installTo(ex_1)
     }
 
     private fun example2() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Spanner(ex_2)
+            Spanner()
                 .appendln("SmallCaps example", Spans.bold())
                 .newLine()
                 .append("The ")
                 .append("Moon", Spans.underline(), Spans.italic(), Spans.backgroundColor(Color.DKGRAY), Spans.foregroundColor(Color.WHITE))
                 .append(" is an astronomical body orbiting Earth as its only natural satellite. ")
                 .all(Spans.textSize(13f, DimensionType.SP))
-                .toSmallCaps()
-                .install()
+                .toSmallCaps(ex_2)
+                .installTo(ex_2)
         }
     }
 
     private fun example3() {
-        Spanner(ex_3)
-            .custom(
-                "Example with a custom positions\n\nThe Moon is an astronomical body orbiting Earth as its only natural satellite.",
+        Spanner()
+            .appendln("Example with a custom positions", Spans.bold())
+            .newLine()
+            .set(
+                "The Moon is an astronomical body orbiting Earth as its only natural satellite.",
                 SpanParams(0, 31, Spans.bold()),
                 SpanParams(37, 41, Spans.boldItalic()),
                 SpanParams(37, 41, Spans.underline()),
                 SpanParams(37, 41, Spans.foregroundColor(Color.RED))
             )
+            .installTo(ex_3)
     }
 
     private fun example4() {
-        Spanner(ex_4)
+        ex_4.text = Spanner()
             .appendln("Custom spans example", StyleSpan(Typeface.BOLD))
             .newLine()
             .append("The ")
             .append("Moon", UnderlineSpan(), StyleSpan(Typeface.ITALIC))
             .append(" is an astronomical body orbiting Earth as its only natural satellite. ")
-            .install()
+            .get()
     }
 
     private fun clickable() {
-        Spanner(text_view_1)
+        Spanner()
             .appendln("clickable", Spans.bold())
             .newLine()
             .append(
@@ -131,101 +134,101 @@ class MainActivity : AppCompatActivity() {
                     }
                 )
             )
-            .install()
+            .installTo(text_view_1)
     }
 
     private fun url() {
-        Spanner(text_view_101)
+        Spanner()
             .appendln("url", Spans.bold())
             .newLine()
             .append(
                 "Google",
                 Spans.url("https://google.com", text_view_101)
             )
-            .install()
+            .installTo(text_view_101)
     }
 
     private fun alignNormal() {
-        Spanner(text_view_2)
+        Spanner()
             .appendln("alignNormal", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite. It is the fifth-largest satellite in the Solar System, and by far the largest among planetary satellites relative to the size of the planet that it orbits (its primary).",
                 Spans.alignNormal()
             )
-            .install()
+            .installTo(text_view_2)
     }
 
     private fun alignOpposite() {
-        Spanner(text_view_3)
+        Spanner()
             .appendln("alignOpposite", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite. It is the fifth-largest satellite in the Solar System, and by far the largest among planetary satellites relative to the size of the planet that it orbits (its primary).",
                 Spans.alignOpposite()
             )
-            .install()
+            .installTo(text_view_3)
     }
 
     private fun alignCenter() {
-        Spanner(text_view_4)
+        Spanner()
             .appendln("alignCenter", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite. It is the fifth-largest satellite in the Solar System, and by far the largest among planetary satellites relative to the size of the planet that it orbits (its primary).",
                 Spans.alignCenter()
             )
-            .install()
+            .installTo(text_view_4)
     }
 
     private fun leadingMargin() {
-        Spanner(text_view_5)
+        Spanner()
             .appendln("leadingMargin", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite. It is the fifth-largest satellite in the Solar System, and by far the largest among planetary satellites relative to the size of the planet that it orbits (its primary).",
                 Spans.leadingMargin(40F, 20F, DimensionType.DP)
             )
-            .install()
+            .installTo(text_view_5)
     }
 
     private fun linesLeadingMargin() {
-        Spanner(text_view_6)
+        Spanner()
             .appendln("linesLeadingMargin", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite. It is the fifth-largest satellite in the Solar System, and by far the largest among planetary satellites relative to the size of the planet that it orbits (its primary).",
                 Spans.linesLeadingMargin(30F, 3, DimensionType.DP)
             )
-            .install()
+            .installTo(text_view_6)
     }
 
     private fun lineHeight() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            Spanner(text_view_7)
+            Spanner()
                 .appendln("lineHeight", Spans.bold())
                 .newLine()
                 .append(
                     "The Moon is an astronomical body orbiting Earth as its only natural satellite. It is the fifth-largest satellite in the Solar System, and by far the largest among planetary satellites relative to the size of the planet that it orbits (its primary).",
                     Spans.lineHeight(27F, DimensionType.SP)
                 )
-                .install()
+                .installTo(text_view_7)
         }
     }
 
     private fun tabStop() {
-        Spanner(text_view_08)
+        Spanner()
             .appendln("tabStop", Spans.bold())
             .newLine()
             .append(
                 "Number\t25\nWeight\t250.12\nTotal\t1039",
                 Spans.tabStop(150F, DimensionType.DP)
             )
-            .install()
+            .installTo(text_view_08)
     }
 
     private fun bullet() {
-        Spanner(text_view_8)
+        Spanner()
             .appendln("bullet", Spans.bold())
             .newLine()
             .appendln(
@@ -236,260 +239,260 @@ class MainActivity : AppCompatActivity() {
                 "It is the fifth-largest satellite in the Solar System, and by far the largest among planetary satellites relative to the size of the planet that it orbits (its primary).",
                 Spans.bullet(24f, Color.RED, DimensionType.DP)
             )
-            .install()
+            .installTo(text_view_8)
     }
 
     private fun subscript() {
-        Spanner(text_view_9)
+        Spanner()
             .appendln("subscript", Spans.bold())
             .newLine()
             .append("log")
             .append("2", Spans.subscript(), Spans.textSize(12F, DimensionType.SP))
-            .install()
+            .installTo(text_view_9)
     }
 
     private fun superscript() {
-        Spanner(text_view_10)
+        Spanner()
             .appendln("superscript", Spans.bold())
             .newLine()
             .append("x")
             .append("2", Spans.superscript(), Spans.textSize(12F, DimensionType.SP))
-            .install()
+            .installTo(text_view_10)
     }
 
     private fun textAppearance() {
-        Spanner(text_view_11)
+        Spanner()
             .appendln("textAppearance", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite",
                 Spans.textAppearance(this, android.R.style.TextAppearance_Medium)
             )
-            .install()
+            .installTo(text_view_11)
     }
 
     private fun textSize() {
-        Spanner(text_view_12)
+        Spanner()
             .appendln("textSize", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite",
                 Spans.textSize(13F, DimensionType.SP)
             )
-            .install()
+            .installTo(text_view_12)
     }
 
     private fun lineBackground() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            Spanner(text_view_13)
+            Spanner()
                 .appendln("lineBackground", Spans.bold())
                 .newLine()
                 .append(
                     "The Moon is an astronomical body orbiting Earth as its only natural satellite",
                     Spans.lineBackground(Color.GREEN)
                 )
-                .install()
+                .installTo(text_view_13)
         }
     }
 
     private fun relativeSize() {
-        Spanner(text_view_14)
+        Spanner()
             .appendln("relativeSize", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite",
                 Spans.relativeSize(1.5f)
             )
-            .install()
+            .installTo(text_view_14)
     }
 
     private fun foregroundColor() {
-        Spanner(text_view_15)
+        Spanner()
             .appendln("foregroundColor", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite",
                 Spans.foregroundColor(Color.BLUE)
             )
-            .install()
+            .installTo(text_view_15)
     }
 
     private fun backgroundColor() {
-        Spanner(text_view_16)
+        Spanner()
             .appendln("backgroundColor", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite",
                 Spans.backgroundColor(Color.LTGRAY)
             )
-            .install()
+            .installTo(text_view_16)
     }
 
     private fun drawableMargin() {
-        Spanner(text_view_17)
+        Spanner()
             .appendln("drawableMargin", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite",
                 Spans.drawableMargin(ContextCompat.getDrawable(this, R.drawable.ic_archive)!!, 16F, DimensionType.DP)
             )
-            .install()
+            .installTo(text_view_17)
     }
 
     private fun iconMargin() {
         val bitmap = Bitmap.createBitmap(20, 20, Bitmap.Config.ARGB_8888)
         bitmap.eraseColor(Color.RED)
 
-        Spanner(text_view_18)
+        Spanner()
             .appendln("iconMargin", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite",
                 Spans.iconMargin(bitmap, 6F, DimensionType.DP)
             )
-            .install()
+            .installTo(text_view_18)
     }
 
     private fun image() {
-        Spanner(text_view_19)
+        Spanner()
             .appendln("image", Spans.bold())
             .newLine()
             .append("The Moon is an astronomical body orbiting Earth as its only natural satellite")
             .append(".", Spans.image(this, R.drawable.ic_archive, DynamicDrawableSpan.ALIGN_BASELINE))
-            .install()
+            .installTo(text_view_19)
     }
 
     private fun scaleX() {
-        Spanner(text_view_20)
+        Spanner()
             .appendln("image", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite",
                 Spans.scaleX(2F)
             )
-            .install()
+            .installTo(text_view_20)
     }
 
     private fun underline() {
-        Spanner(text_view_21)
+        Spanner()
             .appendln("underline", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite",
                 Spans.underline()
             )
-            .install()
+            .installTo(text_view_21)
     }
 
     private fun normal() {
-        Spanner(text_view_22)
+        Spanner()
             .appendln("normal", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite",
                 Spans.normal()
             )
-            .install()
+            .installTo(text_view_22)
     }
 
     private fun bold() {
-        Spanner(text_view_23)
+        Spanner()
             .appendln("bold", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite",
                 Spans.bold()
             )
-            .install()
+            .installTo(text_view_23)
     }
 
     private fun italic() {
-        Spanner(text_view_24)
+        Spanner()
             .appendln("italic", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite",
                 Spans.italic()
             )
-            .install()
+            .installTo(text_view_24)
     }
 
     private fun boldItalic() {
-        Spanner(text_view_25)
+        Spanner()
             .appendln("boldItalic", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite",
                 Spans.boldItalic()
             )
-            .install()
+            .installTo(text_view_25)
     }
 
     private fun blurMaskFilter() {
-        Spanner(text_view_26)
+        Spanner()
             .appendln("blurMaskFilter", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite",
                 Spans.blurMaskFilter(2F, BlurMaskFilter.Blur.NORMAL, DimensionType.DP)
             )
-            .install()
+            .installTo(text_view_26)
     }
 
     private fun quote() {
-        Spanner(text_view_27)
+        Spanner()
             .appendln("blurMaskFilter", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite. It is the fifth-largest satellite in the Solar System, and by far the largest among planetary satellites relative to the size of the planet that it orbits (its primary).",
                 Spans.quote(Color.BLUE)
             )
-            .install()
+            .installTo(text_view_27)
     }
 
     private fun strikethrough() {
-        Spanner(text_view_28)
+        Spanner()
             .appendln("strikethrough", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite",
                 Spans.strikethrough()
             )
-            .install()
+            .installTo(text_view_28)
     }
 
     private fun typeface() {
-        Spanner(text_view_29)
+        Spanner()
             .appendln("typeface", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite",
                 Spans.typeface("monospace")
             )
-            .install()
+            .installTo(text_view_29)
     }
 
     private fun typeface2() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            Spanner(text_view_30)
+            Spanner()
                 .appendln("typeface2", Spans.bold())
                 .newLine()
                 .append(
                     "The Moon is an astronomical body orbiting Earth as its only natural satellite",
                     Spans.typefaceStandard(Typeface.DEFAULT_BOLD)
                 )
-                .install()
+                .installTo(text_view_30)
         }
     }
 
     private fun typeface3() {
-        Spanner(text_view_31)
+        Spanner()
             .appendln("typeface3", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite",
                 Spans.typeface(ResourcesCompat.getFont(this, R.font.roboto_medium)!!)
             )
-            .install()
+            .installTo(text_view_31)
     }
 }

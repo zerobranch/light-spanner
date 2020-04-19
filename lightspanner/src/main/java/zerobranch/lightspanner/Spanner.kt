@@ -7,20 +7,20 @@ import android.text.style.RelativeSizeSpan
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 
-class Spanner(private val textView: TextView) {
+class Spanner {
     private val spannableStringBuilder = SpannableStringBuilder()
     private val pendingActions = mutableListOf<() -> (Unit)>()
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    fun customWithSmallCaps(text: String, vararg parameters: SpanParams) {
-        toSmallCaps()
-        custom(text, *parameters)
+    fun setWithSmallCaps(text: String, textView: TextView, vararg parameters: SpanParams) {
+        toSmallCaps(textView)
+        set(text, *parameters)
     }
 
-    fun custom(
+    fun set(
         text: String,
         vararg parameters: SpanParams
-    ) {
+    ) : Spanner {
         spannableStringBuilder.append(text)
 
         parameters.forEach { parameter ->
@@ -31,7 +31,7 @@ class Spanner(private val textView: TextView) {
             )
         }
 
-        install()
+        return this
     }
 
     fun newLine(): Spanner {
@@ -73,7 +73,7 @@ class Spanner(private val textView: TextView) {
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    fun toSmallCaps(): Spanner {
+    fun toSmallCaps(textView: TextView): Spanner {
         pendingActions.add {
             val multiSpans = smallCaps(spannableStringBuilder.toString())
 
@@ -86,9 +86,13 @@ class Spanner(private val textView: TextView) {
         return this
     }
 
-    fun install() {
+    fun installTo(textView: TextView) {
+        textView.text = get()
+    }
+
+    fun get(): SpannableStringBuilder {
         pendingActions.forEach { it.invoke() }
-        textView.text = spannableStringBuilder
+        return spannableStringBuilder
     }
 
     private fun smallCaps(text: String): List<SpanParams> {

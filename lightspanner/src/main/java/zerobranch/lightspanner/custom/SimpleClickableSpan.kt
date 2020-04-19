@@ -17,5 +17,6 @@ class SimpleClickableSpan(
     override fun updateDrawState(textPaint: TextPaint) {
         super.updateDrawState(textPaint)
         touchListener?.invoke(textView.isPressed, textPaint)
+        textView.invalidate()
     }
 }

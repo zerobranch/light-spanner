@@ -12,12 +12,12 @@ class Spanner(private val textView: TextView) {
     private val pendingActions = mutableListOf<() -> (Unit)>()
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    fun setWithSmallCaps(text: String, vararg parameters: SpanParams) {
+    fun customWithSmallCaps(text: String, vararg parameters: SpanParams) {
         toSmallCaps()
-        set(text, *parameters)
+        custom(text, *parameters)
     }
 
-    fun set(
+    fun custom(
         text: String,
         vararg parameters: SpanParams
     ) {
@@ -86,6 +86,11 @@ class Spanner(private val textView: TextView) {
         return this
     }
 
+    fun install() {
+        pendingActions.forEach { it.invoke() }
+        textView.text = spannableStringBuilder
+    }
+
     private fun smallCaps(text: String): List<SpanParams> {
         val stringBuilder = StringBuilder()
 
@@ -133,10 +138,5 @@ class Spanner(private val textView: TextView) {
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
             )
         }
-    }
-
-    fun install() {
-        pendingActions.forEach { it.invoke() }
-        textView.text = spannableStringBuilder
     }
 }

@@ -15,6 +15,7 @@ import android.text.style.*
 import android.widget.TextView
 import androidx.annotation.*
 import androidx.annotation.IntRange
+import zerobranch.lightspanner.custom.CustomTypefaceSpan
 import zerobranch.lightspanner.custom.SimpleClickableSpan
 import zerobranch.lightspanner.custom.LinesLeadingMarginSpan
 import java.util.*
@@ -24,12 +25,17 @@ object Spans {
     fun clickable(
         textView: TextView,
         clickListener: (() -> Unit),
-        touchListener: ((Boolean, TextPaint) -> Unit)?,
+        touchListener: ((Boolean, TextPaint) -> Unit)? = null,
         highlightColor: Int = Color.TRANSPARENT
     ): ClickableSpan {
         textView.movementMethod = LinkMovementMethod.getInstance()
         textView.highlightColor = highlightColor
         return SimpleClickableSpan(textView, clickListener, touchListener)
+    }
+
+    fun url(url: String, textView: TextView? = null): URLSpan {
+        textView?.movementMethod = LinkMovementMethod.getInstance()
+        return URLSpan(url)
     }
 
     // Paragraph
@@ -123,7 +129,7 @@ object Spans {
     @RequiresApi(Build.VERSION_CODES.Q)
     fun lineBackground(@ColorInt color: Int) = LineBackgroundSpan.Standard(color)
 
-    fun textSizeSp(
+    fun textSize(
         size: Float,
         dimensionType: DimensionType = DimensionType.PX
     ) = AbsoluteSizeSpan(dimensionType.toPx(size), false)
@@ -188,6 +194,8 @@ object Spans {
 
     fun scaleX(@FloatRange(from = 0.0) proportion: Float) = ScaleXSpan(proportion)
 
+    fun strikethrough() = StrikethroughSpan()
+
     fun underline() = UnderlineSpan()
 
     fun normal() = StyleSpan(Typeface.NORMAL)
@@ -216,15 +224,10 @@ object Spans {
         dimensionType: DimensionType = DimensionType.PX
     ) = QuoteSpan(color, dimensionType.toPx(stripeWidth), dimensionType.toPx(gapWidth))
 
-    fun strikethrough() = StrikethroughSpan()
-
     fun typeface(family: String?) = TypefaceSpan(family)
 
     @RequiresApi(Build.VERSION_CODES.P)
-    fun typeface(typeface: Typeface) = TypefaceSpan(typeface)
+    fun typefaceStandard(typeface: Typeface) = TypefaceSpan(typeface)
 
-    fun url(url: String, textView: TextView? = null): URLSpan {
-        textView?.movementMethod = LinkMovementMethod.getInstance()
-        return URLSpan(url)
-    }
+    fun typeface(typeface: Typeface) = CustomTypefaceSpan(typeface)
 }

@@ -3,7 +3,7 @@
 [![API](https://img.shields.io/badge/API-19%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=19)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/zerobranch/android-remote-debugger/blob/master/LICENSE)
 
-**Light Spanner** is a project for the Android platform that provides an simple way to work with Android Spannable.
+**Light Spanner** is a project for the Android platform that provides an simple way to work with `Android Spannable`.
  
 ### Choose language
 [English](https://github.com/zerobranch/light-spanner/blob/master/README.md)

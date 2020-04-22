@@ -11,12 +11,6 @@ class Spanner {
     private val spannableStringBuilder = SpannableStringBuilder()
     private val pendingActions = mutableListOf<() -> (Unit)>()
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    fun setWithSmallCaps(text: String, textView: TextView, vararg parameters: SpanParams) {
-        toSmallCaps(textView)
-        set(text, *parameters)
-    }
-
     fun set(
         text: String,
         vararg parameters: SpanParams

@@ -1,6 +1,7 @@
 package zerobranch.lightspanner
 
 import android.content.Context
+import android.content.res.Resources.NotFoundException
 import android.graphics.Bitmap
 import android.graphics.BlurMaskFilter
 import android.graphics.Color
@@ -15,9 +16,11 @@ import android.text.style.*
 import android.widget.TextView
 import androidx.annotation.*
 import androidx.annotation.IntRange
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import zerobranch.lightspanner.custom.CustomTypefaceSpan
-import zerobranch.lightspanner.custom.SimpleClickableSpan
 import zerobranch.lightspanner.custom.LinesLeadingMarginSpan
+import zerobranch.lightspanner.custom.SimpleClickableSpan
 import java.util.*
 
 object Spans {
@@ -26,7 +29,7 @@ object Spans {
         textView: TextView,
         clickListener: (() -> Unit),
         touchListener: ((Boolean, TextPaint) -> Unit)? = null,
-        highlightColor: Int = Color.TRANSPARENT
+        @ColorInt highlightColor: Int = Color.TRANSPARENT
     ): ClickableSpan {
         textView.movementMethod = LinkMovementMethod.getInstance()
         textView.highlightColor = highlightColor
@@ -84,17 +87,37 @@ object Spans {
 
     fun bullet(
         @FloatRange(from = 0.0) gapWidth: Float,
-        @ColorInt color: Int,
+        @ColorInt colorInt: Int,
         dimensionType: DimensionType = DimensionType.PX
-    ) = BulletSpan(dimensionType.toPx(gapWidth), color)
+    ) = BulletSpan(dimensionType.toPx(gapWidth), colorInt)
+
+    fun bullet(
+        context: Context,
+        @FloatRange(from = 0.0) gapWidth: Float,
+        @ColorRes colorResId: Int,
+        dimensionType: DimensionType = DimensionType.PX
+    ) = BulletSpan(dimensionType.toPx(gapWidth), ContextCompat.getColor(context, colorResId))
 
     @RequiresApi(Build.VERSION_CODES.P)
     fun bullet(
         @FloatRange(from = 0.0) gapWidth: Float,
-        @ColorInt color: Int,
+        @ColorInt colorInt: Int,
         @FloatRange(from = 0.0) bulletRadius: Float,
         dimensionType: DimensionType = DimensionType.PX
-    ) = BulletSpan(dimensionType.toPx(gapWidth), color, dimensionType.toPx(bulletRadius))
+    ) = BulletSpan(dimensionType.toPx(gapWidth), colorInt, dimensionType.toPx(bulletRadius))
+
+    @RequiresApi(Build.VERSION_CODES.P)
+    fun bullet(
+        context: Context,
+        @FloatRange(from = 0.0) gapWidth: Float,
+        @ColorRes colorResId: Int,
+        @FloatRange(from = 0.0) bulletRadius: Float,
+        dimensionType: DimensionType = DimensionType.PX
+    ) = BulletSpan(
+        dimensionType.toPx(gapWidth),
+        ContextCompat.getColor(context, colorResId),
+        dimensionType.toPx(bulletRadius)
+    )
 
     fun subscript() = SubscriptSpan()
 
@@ -127,7 +150,13 @@ object Spans {
 
     // Appearance
     @RequiresApi(Build.VERSION_CODES.Q)
-    fun lineBackground(@ColorInt color: Int) = LineBackgroundSpan.Standard(color)
+    fun lineBackground(@ColorInt colorInt: Int) = LineBackgroundSpan.Standard(colorInt)
+
+    @RequiresApi(Build.VERSION_CODES.Q)
+    fun lineBackground(
+        context: Context,
+        @ColorRes colorResId: Int
+    ) = LineBackgroundSpan.Standard(ContextCompat.getColor(context, colorResId))
 
     fun textSize(
         size: Float,
@@ -136,15 +165,39 @@ object Spans {
 
     fun relativeSize(@FloatRange(from = 0.0) proportion: Float) = RelativeSizeSpan(proportion)
 
-    fun foregroundColor(@ColorInt color: Int) = ForegroundColorSpan(color)
+    fun foregroundColor(@ColorInt colorInt: Int) = ForegroundColorSpan(colorInt)
 
-    fun backgroundColor(@ColorInt color: Int) = BackgroundColorSpan(color)
+    fun foregroundColor(
+        context: Context,
+        @ColorRes colorResId: Int
+    ) = ForegroundColorSpan(ContextCompat.getColor(context, colorResId))
+
+    fun backgroundColor(@ColorInt colorInt: Int) = BackgroundColorSpan(colorInt)
+
+    fun backgroundColor(
+        context: Context,
+        @ColorRes colorResId: Int
+    ) = BackgroundColorSpan(ContextCompat.getColor(context, colorResId))
 
     fun drawableMargin(
         drawable: Drawable,
         padding: Float = 0F,
         dimensionType: DimensionType = DimensionType.PX
     ) = DrawableMarginSpan(drawable, dimensionType.toPx(padding))
+
+    fun drawableMargin(
+        context: Context,
+        @DrawableRes drawableResId: Int,
+        padding: Float = 0F,
+        dimensionType: DimensionType = DimensionType.PX
+    ) : DrawableMarginSpan {
+        val drawable = ContextCompat.getDrawable(context, drawableResId)
+            ?: throw NotFoundException(
+                "Unable to find resource ID #0x" + Integer.toHexString(drawableResId)
+            )
+
+        return DrawableMarginSpan(drawable, dimensionType.toPx(padding))
+    }
 
     fun iconMargin(
         bitmap: Bitmap,
@@ -154,9 +207,9 @@ object Spans {
 
     fun image(
         context: Context,
-        @DrawableRes resourceId: Int,
+        @DrawableRes drawableResId: Int,
         verticalAlignment: Int = DynamicDrawableSpan.ALIGN_BOTTOM
-    ) = ImageSpan(context, resourceId, verticalAlignment)
+    ) = ImageSpan(context, drawableResId, verticalAlignment)
 
     fun image(
         context: Context,
@@ -169,6 +222,20 @@ object Spans {
         source: String,
         verticalAlignment: Int = DynamicDrawableSpan.ALIGN_BOTTOM
     ) = ImageSpan(drawable, source, verticalAlignment)
+
+    fun image(
+        context: Context,
+        @DrawableRes drawableResId: Int,
+        source: String,
+        verticalAlignment: Int = DynamicDrawableSpan.ALIGN_BOTTOM
+    ) : ImageSpan {
+        val drawable = ContextCompat.getDrawable(context, drawableResId)
+            ?: throw NotFoundException(
+                "Unable to find resource ID #0x" + Integer.toHexString(drawableResId)
+            )
+
+        return ImageSpan(drawable, source, verticalAlignment)
+    }
 
     fun image(
         drawable: Drawable,
@@ -218,16 +285,34 @@ object Spans {
 
     @RequiresApi(Build.VERSION_CODES.P)
     fun quote(
-        @ColorInt color: Int,
+        @ColorInt colorInt: Int,
         @FloatRange(from = 0.0) stripeWidth: Float,
         gapWidth: Float,
         dimensionType: DimensionType = DimensionType.PX
-    ) = QuoteSpan(color, dimensionType.toPx(stripeWidth), dimensionType.toPx(gapWidth))
+    ) = QuoteSpan(colorInt, dimensionType.toPx(stripeWidth), dimensionType.toPx(gapWidth))
+
+    @RequiresApi(Build.VERSION_CODES.P)
+    fun quote(
+        context: Context,
+        @ColorRes colorResId: Int,
+        @FloatRange(from = 0.0) stripeWidth: Float,
+        gapWidth: Float,
+        dimensionType: DimensionType = DimensionType.PX
+    ) = QuoteSpan(
+        ContextCompat.getColor(context, colorResId),
+        dimensionType.toPx(stripeWidth),
+        dimensionType.toPx(gapWidth)
+    )
 
     fun typeface(family: String?) = TypefaceSpan(family)
 
     @RequiresApi(Build.VERSION_CODES.P)
-    fun typefaceStandard(typeface: Typeface) = TypefaceSpan(typeface)
+    fun typeface(typeface: Typeface) = TypefaceSpan(typeface)
 
-    fun typeface(typeface: Typeface) = CustomTypefaceSpan(typeface)
+    fun font(typeface: Typeface) = CustomTypefaceSpan(typeface)
+
+    fun font(
+        context: Context,
+        @FontRes fontResId: Int
+    ) = CustomTypefaceSpan(ResourcesCompat.getFont(context, fontResId))
 }

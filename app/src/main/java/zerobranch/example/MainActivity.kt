@@ -11,8 +11,6 @@ import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import kotlinx.android.synthetic.main.activity_main.*
 import zerobranch.lightspanner.DimensionType
 import zerobranch.lightspanner.SpanParams
@@ -71,7 +69,7 @@ class MainActivity : AppCompatActivity() {
             .newLine()
             .appendln("About the moon", Spans.bold())
             .append("The")
-            .append(" Moon ", Spans.boldItalic(), Spans.foregroundColor(ContextCompat.getColor(this, R.color.green)))
+            .append(" Moon ", Spans.boldItalic(), Spans.foregroundColor(this, R.color.green))
             .append("is an astronomical body orbiting Earth as its only natural satellite.")
             .all(Spans.textSize(12f, DimensionType.SP))
             .installTo(ex_1)
@@ -334,7 +332,7 @@ class MainActivity : AppCompatActivity() {
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite",
-                Spans.drawableMargin(ContextCompat.getDrawable(this, R.drawable.ic_archive)!!, 16F, DimensionType.DP)
+                Spans.drawableMargin(this, R.drawable.ic_archive, 16F, DimensionType.DP)
             )
             .installTo(text_view_17)
     }
@@ -364,7 +362,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun scaleX() {
         Spanner()
-            .appendln("image", Spans.bold())
+            .appendln("scaleX", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite",
@@ -441,7 +439,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun quote() {
         Spanner()
-            .appendln("blurMaskFilter", Spans.bold())
+            .appendln("quote", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite. It is the fifth-largest satellite in the Solar System, and by far the largest among planetary satellites relative to the size of the planet that it orbits (its primary).",
@@ -463,7 +461,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun typeface() {
         Spanner()
-            .appendln("typeface", Spans.bold())
+            .appendln("typeface (monospace)", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite",
@@ -475,11 +473,11 @@ class MainActivity : AppCompatActivity() {
     private fun typeface2() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             Spanner()
-                .appendln("typeface2", Spans.bold())
+                .appendln("typeface (default_bold)", Spans.bold())
                 .newLine()
                 .append(
                     "The Moon is an astronomical body orbiting Earth as its only natural satellite",
-                    Spans.typefaceStandard(Typeface.DEFAULT_BOLD)
+                    Spans.typeface(Typeface.DEFAULT_BOLD)
                 )
                 .installTo(text_view_30)
         }
@@ -487,11 +485,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun typeface3() {
         Spanner()
-            .appendln("typeface3", Spans.bold())
+            .appendln("font", Spans.bold())
             .newLine()
             .append(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite",
-                Spans.typeface(ResourcesCompat.getFont(this, R.font.roboto_medium)!!)
+                Spans.font(this, R.font.roboto_medium)
             )
             .installTo(text_view_31)
     }

@@ -11,10 +11,7 @@ class Spanner {
     private val spannableStringBuilder = SpannableStringBuilder()
     private val pendingActions = mutableListOf<() -> (Unit)>()
 
-    fun set(
-        text: String,
-        vararg parameters: SpanParams
-    ) : Spanner {
+    fun set(text: String, vararg parameters: SpanParams): Spanner {
         spannableStringBuilder.append(text)
 
         parameters.forEach { parameter ->

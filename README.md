@@ -11,17 +11,17 @@
 [Русский](https://github.com/zerobranch/light-spanner/blob/master/RUSSIAN_README.md)
 
 ## Features
-* простота
-* применение span или комбмнации span к части текста или ко всему тексту сразу
-* использование совственных span
-* поддержка установки размеров для span сразу в dp, sp или px
-* два способа применения span:
-	* установление span явно указав часть текста 
-	* указав позицию для каждого span в тексте
-* возможность применять к тексту Small Caps стиль
+* simplicity
+* applying a span or span combination to a piece of text or to all text at once
+* using custom spans
+* sizing support for span in dp, sp or px
+* two ways to applying span:
+	* setting span by explicitly specifying part of the text
+	* specifying a position for each span in the text
+* applying Small Caps style to text
 
 ## Download
-Download the sample [APK](https://github.com/zerobranch/light-spanner/releases/download/0.9.0/light_spanner_example.apk) and try it out!
+Download the sample [APK](https://github.com/zerobranch/light-spanner/releases/download/1.0.0/light_spanner_example.apk) and try it out!
 
 ## Screenshots
 <img src="/screenshots/example.png" alt="example.png" title="example.png" width="300" height="560" /> 
@@ -40,7 +40,7 @@ allprojects {
 Add the following dependency to your module's build.gradle:
 ```groovy
 dependencies {
-     implementation 'com.github.zerobranch:light-spanner:0.9.0'
+    implementation 'com.github.zerobranch:light-spanner:1.0.0'
 }
 ```
 
@@ -115,7 +115,7 @@ Spanner()
     .installTo(your_text_view)
 ```
 
-#### Вы можете применить Span используя один из следующих способов:
+#### You can apply Span using one of the following methods:
 
 ```kotlin
 Spanner()
@@ -137,14 +137,14 @@ your_text_view.text = spannable
 
 | Method | Description |
 |---|---|
-| append(text, span1, span2, ... ) | Добавить текст, применить к нему указанные Span |
-| appendln(text, span1, span2, ... ) | Добавить текст, применить к нему указанные Span и добавить перевод на следующую строку |
-| newLine() | добавить перевод на следующую строку |
-| all(span1, span2, ... ) | применить ко всему тексту указанные Span |
-| set(text, spanParams1, spanParams2,... ) | применить Span явно указав позицию |
-| toSmallCaps(textView) | применить ко всему тексту стиль Small Caps |
-| installTo(textView) | применить все указанные span к textView |
-| get() | получить объект SpannableStringBuilder со всеми примененными span |
+| append(text, span1, span2, ... ) | Append text and apply specified Span to it |
+| appendln(text, span1, span2, ... ) | Append text, apply specified Span to it and appends a line separator |
+| newLine() | Appends a line separator |
+| all(span1, span2, ... ) | Apply specified spans to all text |
+| set(text, spanParams1, spanParams2,... ) | Apply Spans by explicitly specifying a position |
+| toSmallCaps(textView) | Apply Small Caps style to all text |
+| installTo(textView) | Apply all specified Spans to textView |
+| get() | Get a SpannableStringBuilder object with all Spans applied |
 
 
 #### Spans
@@ -163,9 +163,11 @@ your_text_view.text = spannable
 
 ## Additionally
 
-При необходимости можно создать свои Span и таким же образом передать их в метод append
+If necessary, you can create your Span and send it to the `append()` method in the same way.
 
-В некоторых методах на вход принимается параметр DimensionType, который позволяет указывать размеры в трех величинах: PX, DP, SP. По умолчанию равен DimensionType равен DimensionType.PX
+In some methods, the parameter DimensionType is accepted as an input, which allows you to specify sizes in three quantities: PX, DP, SP.
+
+In some methods, DimensionType is sent to the input, which allows you to specify sizes in three quantities: PX, DP, SP. By default, DimensionType is equal to DimensionType.PX
 
 ## License
 

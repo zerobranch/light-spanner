@@ -96,9 +96,7 @@ class MainActivity : AppCompatActivity() {
             .set(
                 "The Moon is an astronomical body orbiting Earth as its only natural satellite.",
                 SpanParams(0, 31, Spans.bold()),
-                SpanParams(37, 41, Spans.boldItalic()),
-                SpanParams(37, 41, Spans.underline()),
-                SpanParams(37, 41, Spans.foregroundColor(Color.RED))
+                SpanParams(37, 41, Spans.boldItalic(), Spans.underline(), Spans.foregroundColor(Color.RED))
             )
             .installTo(ex_3)
     }

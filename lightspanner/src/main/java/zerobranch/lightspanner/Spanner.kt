@@ -18,11 +18,13 @@ class Spanner {
         spannableStringBuilder.append(text)
 
         parameters.forEach { parameter ->
-            setParameters(
-                parameter.start,
-                parameter.end,
-                parameter.span
-            )
+            parameter.spans.forEach { span ->
+                setParameters(
+                    parameter.start,
+                    parameter.end,
+                    span
+                )
+            }
         }
 
         return this
@@ -72,7 +74,7 @@ class Spanner {
             val multiSpans = smallCaps(spannableStringBuilder.toString())
 
             multiSpans.forEach { multiSpan ->
-                setParameters(multiSpan.start, multiSpan.end, multiSpan.span)
+                setParameters(multiSpan.start, multiSpan.end, multiSpan.spans)
             }
 
             textView.fontFeatureSettings = "smcp"

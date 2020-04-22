@@ -123,7 +123,7 @@ Spanner()
     .installTo(your_text_view)
 ```
 
-#### или
+#### or
 
 ```kotlin
 val spannable: SpannableStringBuilder = Spanner()

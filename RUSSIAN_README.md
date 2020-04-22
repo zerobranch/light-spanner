@@ -4,16 +4,16 @@
 [![API](https://img.shields.io/badge/API-19%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=19)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/zerobranch/android-remote-debugger/blob/master/LICENSE)
 
-**Light Spanner** is a library that provides an simple way to work with Android Spannable.
+**Light Spanner** - это библиотека, которая предоставляет простой способ работы с Android Spannable.
 
-### Choose language
+### Выберите язык
 [English](https://github.com/zerobranch/light-spanner/blob/master/README.md)
 
 [Русский](https://github.com/zerobranch/light-spanner/blob/master/RUSSIAN_README.md)
 
-## Features
+## Особенности
 * простота
-* применение span или комбмнации span к части текста или ко всему тексту сразу
+* применение Span или комбинации Span к части текста или ко всему тексту сразу
 * использование совственных span
 * поддержка установки размеров для span сразу в dp, sp или px
 * два способа применения span:
@@ -21,14 +21,14 @@
 	* указав позицию для каждого span в тексте
 * возможность применять к тексту Small Caps стиль
 
-## Download
-Download the sample [APK](https://github.com/zerobranch/light-spanner/releases/download/0.9.0/light_spanner_example.apk) and try it out!
+## Скачать
+Скачайте [APK](https://github.com/zerobranch/light-spanner/releases/download/1.0.0/light_spanner_example.apk) примера и попробуйте!
 
-## Screenshots
+## Скриншот
 <img src="/screenshots/example.png" alt="example.png" title="example.png" width="300" height="560" /> 
 
-## Integration
-Add it in your root build.gradle at the end of repositories:
+## Интеграция
+Добавьте в корневой build.gradle следующий репозиторий:
 ```groovy
 allprojects {
     repositories {
@@ -38,15 +38,15 @@ allprojects {
 }
 ```
 
-Add the following dependency to your module's build.gradle:
+Добавьте в build.gradle вашего модуля следующую зависимость:
 ```groovy
 dependencies {
-     implementation 'com.github.zerobranch:light-spanner:0.9.0'
+    implementation 'com.github.zerobranch:light-spanner:1.0.0'
 }
 ```
 
-## How to use ?
-##### Example of use
+## Как использовать ?
+##### Пример использования
 
 ```kotlin
 Spanner()
@@ -94,7 +94,7 @@ Spanner()
     .installTo(your_text_view)
 ```
 
-##### Clickable span example
+##### Пример кликабельного Span
 
 ```kotlin
 Spanner()
@@ -134,19 +134,18 @@ val spannable: SpannableStringBuilder = Spanner()
 your_text_view.text = spannable
 ```
 
-## Description
+## Описание
 
-| Method | Description |
+| Метод | Описание |
 |---|---|
-| append(text, span1, span2, ... ) | Добавить текст, применить к нему указанные Span |
+| append(text, span1, span2, ... ) | Добавить текст и применить к нему указанные Span |
 | appendln(text, span1, span2, ... ) | Добавить текст, применить к нему указанные Span и добавить перевод на следующую строку |
 | newLine() | добавить перевод на следующую строку |
 | all(span1, span2, ... ) | применить ко всему тексту указанные Span |
 | set(text, spanParams1, spanParams2,... ) | применить Span явно указав позицию |
 | toSmallCaps(textView) | применить ко всему тексту стиль Small Caps |
-| installTo(textView) | применить все указанные span к textView |
-| get() | получить объект SpannableStringBuilder со всеми примененными span |
-
+| installTo(textView) | применить все указанные Span к textView |
+| get() | получить объект SpannableStringBuilder со всеми примененными Span |
 
 #### Spans
 
@@ -162,11 +161,11 @@ your_text_view.text = spannable
 | linesLeadingMargin | typeface | iconMargin | font |
 | lineHeight | image |  | |
 
-## Additionally
+## Дополнительно
 
-При необходимости можно создать свои Span и таким же образом передать их в метод append
+При необходимости можно создать свои Span и таким же образом передать их в метод `append`
 
-В некоторых методах на вход принимается параметр DimensionType, который позволяет указывать размеры в трех величинах: PX, DP, SP. По умолчанию равен DimensionType равен DimensionType.PX
+В некоторых методах на вход принимается параметр DimensionType, который позволяет указывать размеры в трех величинах: PX, DP, SP. По умолчанию DimensionType равен DimensionType.PX
 
 ## License
 

@@ -4,7 +4,7 @@
 [![API](https://img.shields.io/badge/API-19%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=19)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/zerobranch/android-remote-debugger/blob/master/LICENSE)
 
-**Light Spanner** - это библиотека, которая предоставляет простой способ работы с Android Spannable.
+**Light Spanner** - это проект для платформы Android, который предоставляет простой способ работы с `Android Spannable`.
 
 ### Выберите язык
 [English](https://github.com/zerobranch/light-spanner/blob/master/README.md)

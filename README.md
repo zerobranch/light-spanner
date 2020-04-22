@@ -24,7 +24,7 @@
 Download the sample [APK](https://github.com/zerobranch/light-spanner/releases/download/0.9.0/light_spanner_example.apk) and try it out!
 
 ## Screenshots
-<img src="/screenshots/example.png" alt="example.png" title="example.png" width="380" height="540" /> 
+<img src="/screenshots/example.png" alt="example.png" title="example.png" width="300" height="560" /> 
 
 ## Integration
 Add it in your root build.gradle at the end of repositories:

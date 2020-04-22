@@ -6,9 +6,9 @@
 **Light Spanner** is a library that provides an simple way to work with Android Spannable.
 
 ### Choose language
-[English](https://github.com/zerobranch/android-remote-debugger/blob/master/README.md)
+[English](https://github.com/zerobranch/light-spanner/blob/master/README.md)
 
-[Русский](https://github.com/zerobranch/android-remote-debugger/blob/master/RUSSIAN_README.md)
+[Русский](https://github.com/zerobranch/light-spanner/blob/master/RUSSIAN_README.md)
 
 ## Features
 * простота
@@ -24,7 +24,7 @@
 Download the sample [APK](https://github.com/zerobranch/light-spanner/releases/download/0.9.0/light_spanner_example.apk) and try it out!
 
 ## Screenshots
-<img src="/screenshots/example.png" alt="example.png" title="example.png" width="180" height="340" /> 
+<img src="/screenshots/example.png" alt="example.png" title="example.png" width="380" height="540" /> 
 
 ## Integration
 Add it in your root build.gradle at the end of repositories:
@@ -160,6 +160,12 @@ your_text_view.text = spannable
 | leadingMargin | quote | drawableMargin | boldItalic |
 | linesLeadingMargin | typeface | iconMargin | font |
 | lineHeight | image |  | |
+
+## Additionally
+
+При необходимости можно создать свои Span и таким же образом передать их в метод append
+
+В некоторых методах на вход принимается параметр DimensionType, который позволяет указывать размеры в трех величинах: PX, DP, SP. По умолчанию равен DimensionType равен DimensionType.PX
 
 ## License
 

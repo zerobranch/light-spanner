@@ -166,7 +166,7 @@ If necessary, you can create your Span and send it to the `append()` method in t
 
 In some methods, the parameter DimensionType is accepted as an input, which allows you to specify sizes in three quantities: PX, DP, SP.
 
-In some methods, DimensionType is sent to the input, which allows you to specify sizes in three quantities: PX, DP, SP. By default, DimensionType is equal to DimensionType.PX
+In some methods, `DimensionType` is sent to the input, which allows you to specify sizes in three quantities: PX, DP, SP. By default, `DimensionType` is equal to `DimensionType.PX`
 
 ## License
 

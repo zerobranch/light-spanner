@@ -23,7 +23,7 @@
 ## Download
 Download the sample [APK](https://github.com/zerobranch/light-spanner/releases/download/1.0.0/light_spanner_example.apk) and try it out!
 
-## Screenshots
+## Screenshot
 <img src="/screenshots/example.png" alt="example.png" title="example.png" width="300" height="560" /> 
 
 ## Integration
@@ -145,7 +145,6 @@ your_text_view.text = spannable
 | toSmallCaps(textView) | Apply Small Caps style to all text |
 | installTo(textView) | Apply all specified Spans to textView |
 | get() | Get a SpannableStringBuilder object with all Spans applied |
-
 
 #### Spans
 

@@ -165,7 +165,7 @@ your_text_view.text = spannable
 
 При необходимости можно создать свои Span и таким же образом передать их в метод `append`
 
-В некоторых методах на вход принимается параметр DimensionType, который позволяет указывать размеры в трех величинах: PX, DP, SP. По умолчанию DimensionType равен DimensionType.PX
+В некоторых методах на вход принимается параметр `DimensionType`, который позволяет указывать размеры в трех величинах: PX, DP, SP. По умолчанию `DimensionType` равен `DimensionType.PX`
 
 ## License
 

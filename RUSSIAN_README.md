@@ -19,7 +19,7 @@
 * два способа применения span:
 	* установление span явно указав часть текста 
 	* указав позицию для каждого span в тексте
-* возможность применять к тексту Small Caps стиль
+* возможность применять к тексту стиля Small Caps
 
 ## Скачать
 Скачайте [APK](https://github.com/zerobranch/light-spanner/releases/download/1.0.0/light_spanner_example.apk) примера и попробуйте!

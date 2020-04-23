@@ -138,8 +138,8 @@ your_text_view.text = spannable
 | Method | Description |
 |---|---|
 | append(text, span1, span2, ... ) | Append text and apply specified Span to it |
-| appendln(text, span1, span2, ... ) | Append text, apply specified Span to it and appends a line separator |
-| newLine() | Appends a line separator |
+| appendln(text, span1, span2, ... ) | Append text, apply specified Span to it and append a line separator |
+| newLine() | Append a line separator |
 | all(span1, span2, ... ) | Apply specified spans to all text |
 | set(text, spanParams1, spanParams2,... ) | Apply Spans by explicitly specifying a position |
 | toSmallCaps(textView) | Apply Small Caps style to all text |

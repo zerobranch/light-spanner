@@ -29,11 +29,12 @@ object Spans {
         textView: TextView,
         clickListener: (() -> Unit),
         touchListener: ((Boolean, TextPaint) -> Unit)? = null,
-        @ColorInt highlightColor: Int = Color.TRANSPARENT
+        @ColorInt highlightColor: Int = Color.TRANSPARENT,
+        isUnderlineText: Boolean = true
     ): ClickableSpan {
         textView.movementMethod = LinkMovementMethod.getInstance()
         textView.highlightColor = highlightColor
-        return SimpleClickableSpan(textView, clickListener, touchListener)
+        return SimpleClickableSpan(textView, clickListener, touchListener, isUnderlineText)
     }
 
     fun url(url: String, textView: TextView? = null): URLSpan {
@@ -163,6 +164,11 @@ object Spans {
         dimensionType: DimensionType = DimensionType.PX
     ) = AbsoluteSizeSpan(dimensionType.toPx(size), false)
 
+    fun textSize(
+        context: Context,
+        @DimenRes dimenResId: Int
+    ) = AbsoluteSizeSpan(context.resources.getDimensionPixelSize(dimenResId), false)
+
     fun relativeSize(@FloatRange(from = 0.0) proportion: Float) = RelativeSizeSpan(proportion)
 
     fun foregroundColor(@ColorInt colorInt: Int) = ForegroundColorSpan(colorInt)
@@ -171,6 +177,13 @@ object Spans {
         context: Context,
         @ColorRes colorResId: Int
     ) = ForegroundColorSpan(ContextCompat.getColor(context, colorResId))
+
+    fun textColor(@ColorInt colorInt: Int) = foregroundColor(colorInt)
+
+    fun textColor(
+        context: Context,
+        @ColorRes colorResId: Int
+    ) = foregroundColor(context, colorResId)
 
     fun backgroundColor(@ColorInt colorInt: Int) = BackgroundColorSpan(colorInt)
 

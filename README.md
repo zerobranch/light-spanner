@@ -67,6 +67,7 @@ Spanner()
     .appendln("lineBackground", Spans.lineBackground(Color.GREEN))
     .appendln("relativeSize", Spans.relativeSize(1.5f))
     .appendln("foregroundColor", Spans.foregroundColor(Color.BLUE))
+    .appendln("textColor", Spans.textColor(Color.BLUE))
     .append("backgroundColor", Spans.backgroundColor(Color.LTGRAY))
     .append("drawableMargin", Spans.drawableMargin(context, R.drawable.your_drawable, 16F, DimensionType.DP))
     .append("iconMargin", Spans.iconMargin(Bitmap, 6F, DimensionType.DP))
@@ -158,7 +159,7 @@ your_text_view.text = spannable
 | align | blurMaskFilter | backgroundColor | italic |
 | leadingMargin | quote | drawableMargin | boldItalic |
 | linesLeadingMargin | typeface | iconMargin | font |
-| lineHeight | image |  | |
+| lineHeight | image | textColor | |
 
 ## Additionally
 

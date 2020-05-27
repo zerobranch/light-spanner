@@ -21,7 +21,7 @@
 * applying Small Caps style to text
 
 ## Download
-Download the sample [APK](https://github.com/zerobranch/light-spanner/releases/download/1.0.0/light_spanner_example.apk) and try it out!
+Download the sample [APK](https://github.com/zerobranch/light-spanner/releases/download/1.0.1/light_spanner_example.apk) and try it out!
 
 ## Screenshot
 <img src="/screenshots/example.png" alt="example.png" title="example.png" width="300" height="560" /> 
@@ -40,7 +40,7 @@ allprojects {
 Add the following dependency to your module's build.gradle:
 ```groovy
 dependencies {
-    implementation 'com.github.zerobranch:light-spanner:1.0.0'
+    implementation 'com.github.zerobranch:light-spanner:1.0.1'
 }
 ```
 
